@@ -1,6 +1,6 @@
-import React from 'react';
-import StatusBadge from '../../componentes/StatusBadge/statusBadge';
-import './detalhesChamado.css';
+import React from "react";
+import StatusBadge from "../../componentes/StatusBadge/StatusBadge";
+import "./detalhesChamado.css";
 
 export default function DetalhesChamado({ onBack }) {
   return (
