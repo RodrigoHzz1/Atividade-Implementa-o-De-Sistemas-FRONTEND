@@ -1,5 +1,5 @@
 import React from 'react';
-import logoImg from '../../assets/logo.jpg';
+import logoImg from '../../assets/logo.png';
 import './logo.css';
 
 export default function Logo({ variant = 'full' }) {
