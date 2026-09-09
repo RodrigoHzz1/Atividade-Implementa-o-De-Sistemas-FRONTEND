@@ -10,11 +10,14 @@ export default function Login({ onLoginSuccess }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Simulação temporária: aceita qualquer e-mail/senha para testar as telas
     const userData = {
       email,
       tipo: tipoAcesso,
       nome: tipoAcesso === 'funcionario' ? 'Técnico TechNexus' : 'Cliente Corporativo',
     };
+
     if (onLoginSuccess) {
       onLoginSuccess(userData);
     }
@@ -22,7 +25,7 @@ export default function Login({ onLoginSuccess }) {
 
   return (
     <div className="login-wrapper">
-      {/* Coluna Esquerda: Hero */}
+      {/* Coluna Esquerda: Hero / Branding */}
       <div className="login-hero">
         <div className="hero-content">
           <div className="hero-brand">
@@ -68,7 +71,7 @@ export default function Login({ onLoginSuccess }) {
         </div>
       </div>
 
-      {/* Coluna Direita: Form de Login */}
+      {/* Coluna Direita: Formulário de Acesso */}
       <div className="login-form-container">
         <div className="form-card">
           <div className="form-header">
@@ -76,6 +79,7 @@ export default function Login({ onLoginSuccess }) {
             <p>Informe suas credenciais para entrar no TechNexus</p>
           </div>
 
+          {/* Abas de seleção de portal */}
           <div className="portal-selector">
             <button
               type="button"
