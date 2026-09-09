@@ -4,8 +4,9 @@ import CardChamado from '../../componentes/CardChamado/cardChamado';
 import Footer from '../../componentes/Footer/footer';
 import './homeCliente.css';
 
-export default function HomeCliente({ user, onLogout, onNavigate }) {
-  const meusChamados = [
+export default function HomeCliente({ user, chamados = [], onLogout, onNavigate }) {
+  // Chamados iniciais caso nenhum estado tenha sido passado ainda
+  const chamadosPadrao = [
     {
       id: '1024',
       titulo: 'Instabilidade na rede de internet',
@@ -24,16 +25,23 @@ export default function HomeCliente({ user, onLogout, onNavigate }) {
     },
   ];
 
+  // Exibe os chamados dinâmicos da prop se existirem; caso contrário, os padrão
+  const listaExibicao = chamados.length > 0 ? chamados : chamadosPadrao;
+
   return (
     <div className="layout-container">
       <Header user={user} onLogout={onLogout} />
+      
       <main className="client-content">
         <div className="client-hero">
           <div>
             <h1>Portal do Cliente</h1>
             <p>Gerencie seus chamados e acompanhe o atendimento em tempo real.</p>
           </div>
-          <button className="btn-primary" onClick={() => onNavigate('novoChamado')}>
+          <button 
+            className="btn-primary" 
+            onClick={() => onNavigate('novoChamado')}
+          >
             + Abrir Novo Chamado
           </button>
         </div>
@@ -41,7 +49,7 @@ export default function HomeCliente({ user, onLogout, onNavigate }) {
         <section className="tickets-section">
           <h2>Seus Chamados Recentes</h2>
           <div className="tickets-grid">
-            {meusChamados.map((item) => (
+            {listaExibicao.map((item) => (
               <CardChamado
                 key={item.id}
                 chamado={item}
@@ -51,6 +59,7 @@ export default function HomeCliente({ user, onLogout, onNavigate }) {
           </div>
         </section>
       </main>
+
       <Footer />
     </div>
   );
