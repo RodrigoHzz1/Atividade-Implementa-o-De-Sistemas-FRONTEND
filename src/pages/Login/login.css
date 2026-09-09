@@ -1,3 +1,4 @@
+/* Layout Principal Split Screen */
 .login-wrapper {
   display: flex;
   min-height: 100vh;
@@ -31,12 +32,16 @@
 }
 
 .hero-content {
-  max-width: 440px;
+  max-width: 460px;
   width: 100%;
   z-index: 1;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+.hero-brand {
+  margin-bottom: 0.5rem;
 }
 
 .hero-text h1 {
@@ -116,28 +121,29 @@
 }
 
 .form-card {
-  max-width: 380px;
+  max-width: 400px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
 .form-header h2 {
   font-size: 1.75rem;
   font-weight: 700;
   color: #f8fafc;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.4rem;
 }
 
 .form-header p {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: #94a3b8;
 }
 
+/* Seletor de Abas (Funcionário vs Cliente) */
 .portal-selector {
   display: flex;
-  background: #111827;
+  background: #161e2e;
   border: 1px solid #1e293b;
   border-radius: 10px;
   padding: 4px;
@@ -146,7 +152,7 @@
 
 .portal-btn {
   flex: 1;
-  padding: 0.65rem 0.5rem;
+  padding: 0.6rem 0.5rem;
   font-size: 0.8rem;
   font-weight: 600;
   border: none;
@@ -158,11 +164,12 @@
 }
 
 .portal-btn.active {
-  background: #a855f7;
+  background: #7c3aed;
   color: #ffffff;
-  box-shadow: 0 2px 10px rgba(168, 85, 247, 0.3);
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
 }
 
+/* Formulário */
 .auth-form {
   display: flex;
   flex-direction: column;
@@ -176,15 +183,15 @@
 }
 
 .input-group label {
-  font-size: 0.8rem;
+  font-size: 0.825rem;
   font-weight: 600;
   color: #cbd5e1;
 }
 
 .input-group input {
-  background: #111827;
+  background: #161e2e;
   border: 1px solid #1e293b;
-  padding: 0.8rem 1rem;
+  padding: 0.85rem 1rem;
   border-radius: 10px;
   color: #f8fafc;
   font-size: 0.9rem;
@@ -193,15 +200,17 @@
 }
 
 .input-group input:focus {
-  border-color: #a855f7;
-  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+  background: #1a2336;
 }
 
+/* Opções: Lembrar e Esqueceu Senha */
 .form-options {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.8rem;
+  font-size: 0.825rem;
 }
 
 .checkbox-container {
@@ -210,49 +219,72 @@
   gap: 8px;
   cursor: pointer;
   color: #94a3b8;
+  user-select: none;
 }
 
 .checkbox-container input {
-  accent-color: #a855f7;
+  accent-color: #7c3aed;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
 }
 
 .forgot-link {
   color: #a855f7;
   text-decoration: none;
   font-weight: 500;
+  transition: color 0.2s;
 }
 
 .forgot-link:hover {
+  color: #c084fc;
   text-decoration: underline;
 }
 
+/* Botão Entrar */
 .submit-btn {
-  background: #a855f7;
+  background: #7c3aed;
   color: #ffffff;
   border: none;
-  padding: 0.85rem;
+  padding: 0.9rem;
   border-radius: 10px;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
   margin-top: 0.5rem;
-  box-shadow: 0 4px 14px rgba(168, 85, 247, 0.35);
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
 }
 
 .submit-btn:hover {
-  background: #9333ea;
-  box-shadow: 0 6px 18px rgba(168, 85, 247, 0.5);
+  background: #6d28d9;
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.5);
+  transform: translateY(-1px);
 }
 
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Footer */
 .login-footer {
   text-align: center;
   font-size: 0.75rem;
   color: #475569;
+  margin-top: 1rem;
 }
 
+/* Responsividade para mobile */
 @media (max-width: 900px) {
+  .login-wrapper {
+    flex-direction: column;
+  }
+
   .login-hero {
     display: none;
+  }
+
+  .login-form-container {
+    padding: 2rem 1.5rem;
   }
 }
