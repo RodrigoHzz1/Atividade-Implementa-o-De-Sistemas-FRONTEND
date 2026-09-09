@@ -1,17 +1,15 @@
-import React from 'react';
-import logoImg from '../../assets/logo.jpg';
-import './logo.css';
+import React from "react";
+import logoImg from "../../assets/logo.png";
+import "./logo.css";
 
-export default function Logo({ variant = 'full' }) {
+export default function Logo() {
   return (
-    <div className="technexus-logo">
-      <img src={logoImg} alt="TechNexus Logo" className="logo-image" />
-      {variant === 'full' && (
-        <div className="logo-text-group">
-          <span className="brand-name">TechNexus</span>
-          <span className="brand-tagline">TECNOLOGIA QUE CONECTA VOCÊ</span>
-        </div>
-      )}
+    <div className="logo-brand">
+      <img src={logoImg} alt="TechNexus Icon" className="logo-icon" />
+      <div className="logo-text-wrapper">
+        <span className="logo-title">TechNexus</span>
+        <span className="logo-subtitle">TECNOLOGIA QUE CONECTA VOCÊ</span>
+      </div>
     </div>
   );
 }
