@@ -39,17 +39,29 @@ export default function Login({ onLoginSuccess }) {
             </p>
           </div>
 
-          {/* NOVO ELEMENTO: Card de Prova Social / Depoimento */}
-          <div className="hero-testimonial-card">
-            <div className="stars">★★★★★</div>
-            <p className="testimonial-quote">
-              "A centralização dos chamados no TechNexus otimizou nosso tempo de resposta e trouxe total controle sobre a nossa infraestrutura."
-            </p>
-            <div className="testimonial-author">
-              <div className="avatar-placeholder">CTO</div>
-              <div className="author-info">
-                <strong>Guto S.</strong>
-                <span>Diretor de Tecnologia • Grupo Nexus</span>
+          {/* Área de Destaques do Sistema */}
+          <div className="hero-features-card">
+            <div className="feature-item">
+              <div className="feature-badge">⚡</div>
+              <div>
+                <strong>Atendimento Inteligente</strong>
+                <p>Priorização automática por SLA e impacto no negócio.</p>
+              </div>
+            </div>
+
+            <div className="feature-item">
+              <div className="feature-badge">🛡️</div>
+              <div>
+                <strong>Segurança Avançada</strong>
+                <p>Controle de acesso restrito e histórico de ações auditável.</p>
+              </div>
+            </div>
+
+            <div className="feature-item">
+              <div className="feature-badge">📊</div>
+              <div>
+                <strong>Métricas em Tempo Real</strong>
+                <p>Acompanhe o desempenho da infraestrutura em um único lugar.</p>
               </div>
             </div>
           </div>
