@@ -22,7 +22,7 @@ export default function Login({ onLoginSuccess }) {
 
   return (
     <div className="login-wrapper">
-      {/* Coluna Esquerda: Branding & Mini-Dashboard */}
+      {/* Coluna Esquerda: Hero */}
       <div className="login-hero">
         <div className="hero-content">
           <div className="hero-brand">
@@ -39,31 +39,17 @@ export default function Login({ onLoginSuccess }) {
             </p>
           </div>
 
-          {/* Mini Dashboard Vivo (Preenchimento Profissional) */}
-          <div className="hero-preview-card">
-            <div className="preview-status-header">
-              <span className="status-dot"></span>
-              <span className="status-text">Sistemas 100% Operacionais</span>
-            </div>
-
-            <div className="preview-stats-grid">
-              <div className="stat-box">
-                <span className="stat-value">98.4%</span>
-                <span className="stat-label">SLA Cumprido</span>
-              </div>
-              <div className="stat-box highlight">
-                <span className="stat-value">12m</span>
-                <span className="stat-label">Tempo Médio</span>
-              </div>
-            </div>
-
-            <div className="preview-activity">
-              <div className="activity-item">
-                <div className="activity-icon"></div>
-                <div className="activity-info">
-                  <span className="activity-title">Chamado #1024 Atualizado</span>
-                  <span className="activity-time">há 2 minutos</span>
-                </div>
+          {/* NOVO ELEMENTO: Card de Prova Social / Depoimento */}
+          <div className="hero-testimonial-card">
+            <div className="stars">★★★★★</div>
+            <p className="testimonial-quote">
+              "A centralização dos chamados no TechNexus otimizou nosso tempo de resposta e trouxe total controle sobre a nossa infraestrutura."
+            </p>
+            <div className="testimonial-author">
+              <div className="avatar-placeholder">CTO</div>
+              <div className="author-info">
+                <strong>Guto S.</strong>
+                <span>Diretor de Tecnologia • Grupo Nexus</span>
               </div>
             </div>
           </div>
