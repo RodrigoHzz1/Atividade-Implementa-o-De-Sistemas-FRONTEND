@@ -1,4 +1,4 @@
-/* Layout Principal Split Screen */
+/* Container Principal Split-Screen */
 .login-wrapper {
   display: flex;
   min-height: 100vh;
@@ -7,109 +7,159 @@
   background-color: #0b0f19;
 }
 
-/* --- COLUNA ESQUERDA (HERO) --- */
+/* --- COLUNA ESQUERDA (Escurecida e Profissional) --- */
 .login-hero {
   flex: 1;
-  background: #f8fafc;
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 3rem;
   position: relative;
+  border-right: 1px solid #1e293b;
   overflow: hidden;
 }
 
-/* Círculo suave de fundo no lado claro */
 .login-hero::before {
   content: '';
   position: absolute;
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
-  border-radius: 50%;
-  top: 15%;
-  left: 10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+  top: 10%;
+  left: 20%;
   pointer-events: none;
 }
 
 .hero-content {
-  max-width: 460px;
+  max-width: 440px;
   width: 100%;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
-}
-
-.hero-brand {
-  margin-bottom: 0.5rem;
+  gap: 2rem;
 }
 
 .hero-text h1 {
   font-size: 2.25rem;
   font-weight: 800;
-  color: #0f172a;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  color: #f8fafc;
+  line-height: 1.25;
 }
 
+/* Correção definitiva da fonte em gradiente roxo */
 .purple-gradient-text {
-  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  background: linear-gradient(135deg, #c084fc 0%, #a855f7 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 .hero-text p {
-  margin-top: 1rem;
+  margin-top: 0.75rem;
   font-size: 0.95rem;
-  color: #64748b;
+  color: #94a3b8;
   line-height: 1.6;
 }
 
-/* Card Mockup de Prévia do Sistema */
+/* Componente Mini Dashboard (Esquerda) */
 .hero-preview-card {
-  background: #0f172a;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid #1e293b;
   border-radius: 16px;
-  padding: 1.5rem;
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.25rem;
+  backdrop-filter: blur(8px);
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.preview-status-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: #a7f3d0;
+  font-weight: 500;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.preview-stats-grid {
+  display: flex;
   gap: 12px;
 }
 
-.preview-header-bar {
-  height: 12px;
-  width: 45%;
-  background: #7c3aed;
-  border-radius: 6px;
-}
-
-.preview-sub-bar {
-  height: 8px;
-  width: 70%;
-  background: #1e293b;
-  border-radius: 4px;
-  margin-bottom: 8px;
-}
-
-.preview-boxes {
+.stat-box {
+  flex: 1;
+  background: #0b0f19;
+  border: 1px solid #1e293b;
+  border-radius: 10px;
+  padding: 0.75rem;
   display: flex;
+  flex-direction: column;
+}
+
+.stat-box.highlight {
+  border-color: rgba(168, 85, 247, 0.4);
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.preview-activity {
+  background: #0b0f19;
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
   gap: 10px;
 }
 
-.p-box {
-  flex: 1;
-  height: 48px;
-  background: #1e293b;
-  border-radius: 8px;
+.activity-icon {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #a855f7;
 }
 
-.p-box.active {
-  background: #7c3aed;
-  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+.activity-info {
+  display: flex;
+  flex-direction: column;
 }
 
-/* --- COLUNA DIREITA (FORMULÁRIO) --- */
+.activity-title {
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+.activity-time {
+  font-size: 0.65rem;
+  color: #64748b;
+}
+
+/* --- COLUNA DIREIRA (FORMULÁRIO) --- */
 .login-form-container {
   flex: 1;
   background-color: #0b0f19;
@@ -120,29 +170,28 @@
 }
 
 .form-card {
-  max-width: 400px;
+  max-width: 380px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 1.5rem;
 }
 
 .form-header h2 {
   font-size: 1.75rem;
   font-weight: 700;
   color: #f8fafc;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 
 .form-header p {
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   color: #94a3b8;
 }
 
-/* Seletor de Abas (Funcionário vs Cliente) */
 .portal-selector {
   display: flex;
-  background: #161e2e;
+  background: #111827;
   border: 1px solid #1e293b;
   border-radius: 10px;
   padding: 4px;
@@ -151,7 +200,7 @@
 
 .portal-btn {
   flex: 1;
-  padding: 0.6rem 0.5rem;
+  padding: 0.65rem 0.5rem;
   font-size: 0.8rem;
   font-weight: 600;
   border: none;
@@ -163,12 +212,11 @@
 }
 
 .portal-btn.active {
-  background: #7c3aed;
+  background: #a855f7;
   color: #ffffff;
-  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+  box-shadow: 0 2px 10px rgba(168, 85, 247, 0.3);
 }
 
-/* Formulário */
 .auth-form {
   display: flex;
   flex-direction: column;
@@ -178,19 +226,19 @@
 .input-group {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .input-group label {
-  font-size: 0.825rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: #cbd5e1;
 }
 
 .input-group input {
-  background: #161e2e;
+  background: #111827;
   border: 1px solid #1e293b;
-  padding: 0.85rem 1rem;
+  padding: 0.8rem 1rem;
   border-radius: 10px;
   color: #f8fafc;
   font-size: 0.9rem;
@@ -199,17 +247,15 @@
 }
 
 .input-group input:focus {
-  border-color: #7c3aed;
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
-  background: #1a2336;
+  border-color: #a855f7;
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
 }
 
-/* Opções: Lembrar e Esqueceu Senha */
 .form-options {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.825rem;
+  font-size: 0.8rem;
 }
 
 .checkbox-container {
@@ -218,72 +264,49 @@
   gap: 8px;
   cursor: pointer;
   color: #94a3b8;
-  user-select: none;
 }
 
 .checkbox-container input {
-  accent-color: #7c3aed;
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
+  accent-color: #a855f7;
 }
 
 .forgot-link {
   color: #a855f7;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.2s;
 }
 
 .forgot-link:hover {
-  color: #c084fc;
   text-decoration: underline;
 }
 
-/* Botão Entrar */
 .submit-btn {
-  background: #7c3aed;
+  background: #a855f7;
   color: #ffffff;
   border: none;
-  padding: 0.9rem;
+  padding: 0.85rem;
   border-radius: 10px;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
   margin-top: 0.5rem;
-  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+  box-shadow: 0 4px 14px rgba(168, 85, 247, 0.35);
 }
 
 .submit-btn:hover {
-  background: #6d28d9;
-  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.5);
-  transform: translateY(-1px);
+  background: #9333ea;
+  box-shadow: 0 6px 18px rgba(168, 85, 247, 0.5);
 }
 
-.submit-btn:active {
-  transform: translateY(0);
-}
-
-/* Footer */
 .login-footer {
   text-align: center;
   font-size: 0.75rem;
   color: #475569;
-  margin-top: 1rem;
 }
 
-/* Responsividade para mobile */
 @media (max-width: 900px) {
-  .login-wrapper {
-    flex-direction: column;
-  }
-
   .login-hero {
     display: none;
-  }
-
-  .login-form-container {
-    padding: 2rem 1.5rem;
   }
 }

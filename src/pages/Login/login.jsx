@@ -10,14 +10,11 @@ export default function Login({ onLoginSuccess }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Simulação temporária: aceita qualquer e-mail/senha para testar as telas
     const userData = {
       email,
       tipo: tipoAcesso,
       nome: tipoAcesso === 'funcionario' ? 'Técnico TechNexus' : 'Cliente Corporativo',
     };
-
     if (onLoginSuccess) {
       onLoginSuccess(userData);
     }
@@ -25,7 +22,7 @@ export default function Login({ onLoginSuccess }) {
 
   return (
     <div className="login-wrapper">
-      {/* Coluna Esquerda: Hero / Branding */}
+      {/* Coluna Esquerda: Branding & Mini-Dashboard */}
       <div className="login-hero">
         <div className="hero-content">
           <div className="hero-brand">
@@ -42,19 +39,38 @@ export default function Login({ onLoginSuccess }) {
             </p>
           </div>
 
+          {/* Mini Dashboard Vivo (Preenchimento Profissional) */}
           <div className="hero-preview-card">
-            <div className="preview-header-bar"></div>
-            <div className="preview-sub-bar"></div>
-            <div className="preview-boxes">
-              <div className="p-box"></div>
-              <div className="p-box"></div>
-              <div className="p-box active"></div>
+            <div className="preview-status-header">
+              <span className="status-dot"></span>
+              <span className="status-text">Sistemas 100% Operacionais</span>
+            </div>
+
+            <div className="preview-stats-grid">
+              <div className="stat-box">
+                <span className="stat-value">98.4%</span>
+                <span className="stat-label">SLA Cumprido</span>
+              </div>
+              <div className="stat-box highlight">
+                <span className="stat-value">12m</span>
+                <span className="stat-label">Tempo Médio</span>
+              </div>
+            </div>
+
+            <div className="preview-activity">
+              <div className="activity-item">
+                <div className="activity-icon"></div>
+                <div className="activity-info">
+                  <span className="activity-title">Chamado #1024 Atualizado</span>
+                  <span className="activity-time">há 2 minutos</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Coluna Direita: Formulário de Acesso */}
+      {/* Coluna Direita: Form de Login */}
       <div className="login-form-container">
         <div className="form-card">
           <div className="form-header">
@@ -62,7 +78,6 @@ export default function Login({ onLoginSuccess }) {
             <p>Informe suas credenciais para entrar no TechNexus</p>
           </div>
 
-          {/* Abas de seleção de portal */}
           <div className="portal-selector">
             <button
               type="button"
@@ -118,7 +133,6 @@ export default function Login({ onLoginSuccess }) {
                   checked={lembrar}
                   onChange={(e) => setLembrar(e.target.checked)}
                 />
-                <span className="checkmark"></span>
                 <span className="label-text">Lembrar acesso</span>
               </label>
               <a href="#esqueceu" className="forgot-link">
