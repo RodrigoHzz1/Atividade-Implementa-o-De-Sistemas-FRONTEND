@@ -1,38 +1,62 @@
-/* Container do Overlay (Fundo) */
+/* Overlay de fundo (Glassmorphism escuro) */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(4px);
+  background-color: rgba(5, 8, 18, 0.85);
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  padding: 1rem;
 }
 
-/* Card do Modal */
-.modal-content {
-  background: #0f172a;
+/* Card Principal */
+.modal-container {
+  background: #0b0f19;
   border: 1px solid #1e293b;
-  border-radius: 16px;
+  border-radius: 12px;
   width: 100%;
-  max-width: 540px;
+  max-width: 520px;
   padding: 2rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
-  color: #f8fafc;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  box-sizing: border-box;
 }
 
-.modal-content h2 {
+/* Cabeçalho */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.modal-header h2 {
   font-size: 1.35rem;
   font-weight: 700;
-  margin-bottom: 1.5rem;
+  margin: 0;
   color: #ffffff;
 }
 
-/* Formulário e Campos */
+.close-btn {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  color: #ffffff;
+}
+
+/* Formulário e Estrutura dos Campos */
 .modal-form {
   display: flex;
   flex-direction: column;
@@ -49,7 +73,7 @@
 .form-group label {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #cbd5e1;
+  color: #94a3b8;
 }
 
 .form-group input,
@@ -57,61 +81,70 @@
 .form-group textarea {
   width: 100%;
   box-sizing: border-box;
-  background: #1e293b;
-  border: 1px solid #334155;
+  background: #111827;
+  border: 1px solid #1e293b;
   border-radius: 8px;
   padding: 0.75rem 1rem;
   color: #f8fafc;
   font-size: 0.9rem;
   outline: none;
+  font-family: inherit;
   transition: border-color 0.2s ease;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: #a855f7;
+  border-color: #8b5cf6;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
 .form-group textarea {
-  resize: vertical;
-  min-height: 110px;
-  font-family: inherit;
+  resize: none;
+  min-height: 100px;
 }
 
-/* Ações/Botões */
+/* Botões de Ação */
 .modal-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
 }
 
 .btn-cancel {
   background: transparent;
-  border: 1px solid #334155;
-  color: #cbd5e1;
-  padding: 0.6rem 1.25rem;
+  border: 1px solid #1e293b;
+  color: #94a3b8;
+  padding: 0.65rem 1.25rem;
   border-radius: 8px;
   font-weight: 500;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .btn-cancel:hover {
-  background: #1e293b;
+  background: #111827;
+  color: #ffffff;
 }
 
 .btn-submit {
-  background: #a855f7;
+  background: #8b5cf6;
   border: none;
   color: #ffffff;
-  padding: 0.6rem 1.25rem;
+  padding: 0.65rem 1.25rem;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4);
+  transition: background 0.2s ease;
 }
 
 .btn-submit:hover {
-  background: #9333ea;
+  background: #7c3aed;
 }
