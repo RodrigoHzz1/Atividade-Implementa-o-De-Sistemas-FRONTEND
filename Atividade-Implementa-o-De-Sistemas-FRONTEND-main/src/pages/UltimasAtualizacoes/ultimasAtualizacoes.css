@@ -1,0 +1,108 @@
+.updates-page-container {
+  min-height: 100vh;
+  background-color: #0b0d17 !important;
+  color: #f1f5f9;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.updates-page-content {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px 24px;
+  box-sizing: border-box;
+}
+
+.updates-page-content .btn-voltar {
+  align-self: flex-start;
+  background-color: #131722 !important;
+  border: 1px solid #1e293b !important;
+  color: #cbd5e1 !important;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.updates-header-section h1 {
+  font-size: 26px;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  font-weight: 700;
+}
+
+.updates-header-section p {
+  color: #94a3b8;
+  margin: 0 0 24px 0;
+  font-size: 14px;
+}
+
+.updates-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.update-card-item {
+  background-color: #131722 !important;
+  border: 1px solid #1e293b !important;
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.update-card-item:hover {
+  border-color: #6366f1 !important;
+  background-color: #181d2b !important;
+}
+
+.update-card-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.update-card-id {
+  font-size: 12px;
+  font-weight: 700;
+  color: #818cf8;
+}
+
+.update-card-left h3 {
+  font-size: 16px;
+  color: #ffffff;
+  margin: 0;
+  font-weight: 600;
+}
+
+.update-card-date {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status-andamento {
+  background: rgba(245, 158, 11, 0.15) !important;
+  color: #f59e0b !important;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.status-concluido {
+  background: rgba(16, 185, 129, 0.15) !important;
+  color: #10b981 !important;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}

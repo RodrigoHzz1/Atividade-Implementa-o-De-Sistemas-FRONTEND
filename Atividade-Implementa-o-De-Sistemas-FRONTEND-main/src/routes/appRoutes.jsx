@@ -7,6 +7,7 @@ import Chamados from '../pages/Chamados/chamados';
 import NovoChamado from '../pages/NovoChamado/novoChamado';
 import DetalhesChamado from '../pages/DetalhesChamado/detalhesChamado';
 import Clientes from '../pages/Clientes/clientes';
+import UltimasAtualizacoes from '../pages/UltimasAtualizacoes/ultimasAtualizacoes';
 import Funcionarios from '../pages/Funcionarios/funcionarios';
 import Equipamentos from '../pages/Equipamentos/equipamentos';
 import Relatorio from '../pages/Relatorio/relatorio';
@@ -14,8 +15,8 @@ import Relatorio from '../pages/Relatorio/relatorio';
 export default function AppRoutes() {
   const [user, setUser] = useState(null);
   const [currentPage, setCurrentPage] = useState('home');
+  const [selectedChamadoId, setSelectedChamadoId] = useState(null);
 
-  // Se não estiver logado, exibe a tela de Login
   if (!user) {
     return <Login onLoginSuccess={(userData) => setUser(userData)} />;
   }
@@ -23,51 +24,52 @@ export default function AppRoutes() {
   const handleLogout = () => {
     setUser(null);
     setCurrentPage('home');
+    setSelectedChamadoId(null);
   };
 
-  const handleNavigate = (page) => {
+  const handleNavigate = (page, param = null) => {
+    if (page === 'gestaoChamados') page = 'chamados';
+    if (page === 'baseClientes') page = 'clientes';
+    if (page === 'relatorios') page = 'relatorio';
+
+    if (param) setSelectedChamadoId(param);
     setCurrentPage(page);
   };
 
   const handleBack = () => {
     setCurrentPage('home');
+    setSelectedChamadoId(null);
   };
 
-  // Renderização condicional para o Portal do Cliente
   if (user.tipo === 'cliente') {
-    if (currentPage === 'novoChamado') {
-      return <NovoChamado user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />;
+    switch (currentPage) {
+      case 'novoChamado':
+        return <NovoChamado user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />;
+      case 'detalhesChamado':
+        return <DetalhesChamado user={user} chamadoId={selectedChamadoId} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />;
+      default:
+        return <HomeCliente user={user} onLogout={handleLogout} onNavigate={handleNavigate} />;
     }
-    if (currentPage === 'detalhesChamado') {
-      return <DetalhesChamado user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />;
-    }
-    return <HomeCliente user={user} onLogout={handleLogout} onNavigate={handleNavigate} />;
   }
 
-  // Renderização condicional para o Portal do Funcionário
-  return (
-    <div>
-      {currentPage === 'home' && (
-        <HomeFuncionario user={user} onLogout={handleLogout} onNavigate={handleNavigate} />
-      )}
-      {currentPage === 'dashboard' && (
-        <Dashboard user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />
-      )}
-      {currentPage === 'chamados' && (
-        <Chamados user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />
-      )}
-      {currentPage === 'clientes' && (
-        <Clientes user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />
-      )}
-      {currentPage === 'funcionarios' && (
-        <Funcionarios user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />
-      )}
-      {currentPage === 'equipamentos' && (
-        <Equipamentos user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />
-      )}
-      {currentPage === 'relatorio' && (
-        <Relatorio user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />
-      )}
-    </div>
-  );
+  switch (currentPage) {
+    case 'dashboard':
+      return <Dashboard user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />;
+    case 'chamados':
+      return <Chamados user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />;
+    case 'detalhesChamado':
+      return <DetalhesChamado user={user} chamadoId={selectedChamadoId} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />;
+    case 'clientes':
+      return <Clientes user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />;
+    case 'ultimasAtualizacoes':
+      return <UltimasAtualizacoes user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />;
+    case 'funcionarios':
+      return <Funcionarios user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />;
+    case 'equipamentos':
+      return <Equipamentos user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />;
+    case 'relatorio':
+      return <Relatorio user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />;
+    default:
+      return <HomeFuncionario user={user} onLogout={handleLogout} onNavigate={handleNavigate} />;
+  }
 }
