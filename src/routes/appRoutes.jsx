@@ -29,13 +29,17 @@ export default function AppRoutes() {
     setCurrentPage(page);
   };
 
+  const handleBack = () => {
+    setCurrentPage('home');
+  };
+
   // Renderização condicional para o Portal do Cliente
   if (user.tipo === 'cliente') {
     if (currentPage === 'novoChamado') {
-      return <NovoChamado onBack={() => handleNavigate('home')} />;
+      return <NovoChamado user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />;
     }
     if (currentPage === 'detalhesChamado') {
-      return <DetalhesChamado onBack={() => handleNavigate('home')} />;
+      return <DetalhesChamado user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />;
     }
     return <HomeCliente user={user} onLogout={handleLogout} onNavigate={handleNavigate} />;
   }
@@ -46,12 +50,24 @@ export default function AppRoutes() {
       {currentPage === 'home' && (
         <HomeFuncionario user={user} onLogout={handleLogout} onNavigate={handleNavigate} />
       )}
-      {currentPage === 'dashboard' && <Dashboard />}
-      {currentPage === 'chamados' && <Chamados />}
-      {currentPage === 'clientes' && <Clientes />}
-      {currentPage === 'funcionarios' && <Funcionarios />}
-      {currentPage === 'equipamentos' && <Equipamentos />}
-      {currentPage === 'relatorio' && <Relatorio />}
+      {currentPage === 'dashboard' && (
+        <Dashboard user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />
+      )}
+      {currentPage === 'chamados' && (
+        <Chamados user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />
+      )}
+      {currentPage === 'clientes' && (
+        <Clientes user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />
+      )}
+      {currentPage === 'funcionarios' && (
+        <Funcionarios user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />
+      )}
+      {currentPage === 'equipamentos' && (
+        <Equipamentos user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />
+      )}
+      {currentPage === 'relatorio' && (
+        <Relatorio user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />
+      )}
     </div>
   );
 }
