@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import Login from '../pages/Login/login';
 import HomeFuncionario from '../pages/Home/homeFuncionario';
 import HomeCliente from '../pages/Home/homeCliente';
+import HomeAdmin from '../pages/Home/homeAdmin';
 import Dashboard from '../pages/Dashboard/dashboard';
 import Chamados from '../pages/Chamados/chamados';
 import NovoChamado from '../pages/NovoChamado/novoChamado';
 import DetalhesChamado from '../pages/DetalhesChamado/detalhesChamado';
 import Clientes from '../pages/Clientes/clientes';
+import NovoFuncionario from '../pages/NovoFuncionario/novoFuncionario';
 import UltimasAtualizacoes from '../pages/UltimasAtualizacoes/ultimasAtualizacoes';
 import Funcionarios from '../pages/Funcionarios/funcionarios';
 import Equipamentos from '../pages/Equipamentos/equipamentos';
@@ -28,6 +30,7 @@ export default function AppRoutes() {
   };
 
   const handleNavigate = (page, param = null) => {
+    console.log('Navegando para:', page); // Debug no F12
     if (page === 'gestaoChamados') page = 'chamados';
     if (page === 'baseClientes') page = 'clientes';
     if (page === 'relatorios') page = 'relatorio';
@@ -41,6 +44,7 @@ export default function AppRoutes() {
     setSelectedChamadoId(null);
   };
 
+  // 1. Roteamento: Cliente
   if (user.tipo === 'cliente') {
     switch (currentPage) {
       case 'novoChamado':
@@ -52,6 +56,26 @@ export default function AppRoutes() {
     }
   }
 
+  // 2. Roteamento: Admin
+  if (user.tipo === 'admin') {
+    switch (currentPage) {
+      case 'novoFuncionario':
+        return <NovoFuncionario user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />;
+      case 'funcionarios':
+        return <Funcionarios user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />;
+      case 'setores':
+      case 'clientes':
+        return <Clientes user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />;
+      case 'relatorio':
+        return <Relatorio user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />;
+      case 'detalhesChamado':
+        return <DetalhesChamado user={user} chamadoId={selectedChamadoId} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />;
+      default:
+        return <HomeAdmin user={user} onLogout={handleLogout} onNavigate={handleNavigate} />;
+    }
+  }
+
+  // 3. Roteamento: Funcionário
   switch (currentPage) {
     case 'dashboard':
       return <Dashboard user={user} onLogout={handleLogout} onBack={handleBack} onNavigate={handleNavigate} />;

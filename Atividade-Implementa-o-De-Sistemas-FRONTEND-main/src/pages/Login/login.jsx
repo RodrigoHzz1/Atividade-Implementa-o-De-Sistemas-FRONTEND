@@ -6,16 +6,36 @@ export default function Login({ onLoginSuccess }) {
   const [tipoAcesso, setTipoAcesso] = useState('funcionario');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const [lembrar, setLembrar] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Simulação temporária: aceita qualquer e-mail/senha para testar as telas
+    // Dados dinâmicos de acordo com o portal selecionado
+    const perfis = {
+      admin: {
+        nome: 'Administrador Master',
+        cargo: 'Gestor de TI / Admin',
+        tipo: 'admin'
+      },
+      funcionario: {
+        nome: 'Carlos Oliveira',
+        cargo: 'Técnico Nível 2',
+        tipo: 'funcionario'
+      },
+      cliente: {
+        nome: 'Empresa Alfa',
+        cargo: 'Cliente Corporativo',
+        tipo: 'cliente'
+      }
+    };
+
+    const userSelected = perfis[tipoAcesso];
+
     const userData = {
       email,
-      tipo: tipoAcesso,
-      nome: tipoAcesso === 'funcionario' ? 'Técnico TechNexus' : 'Cliente Corporativo',
+      tipo: userSelected.tipo,
+      nome: userSelected.nome,
+      cargo: userSelected.cargo,
     };
 
     if (onLoginSuccess) {
@@ -86,29 +106,36 @@ export default function Login({ onLoginSuccess }) {
               className={`portal-btn ${tipoAcesso === 'funcionario' ? 'active' : ''}`}
               onClick={() => setTipoAcesso('funcionario')}
             >
-              Portal Funcionário
+              Funcionário
             </button>
             <button
               type="button"
               className={`portal-btn ${tipoAcesso === 'cliente' ? 'active' : ''}`}
               onClick={() => setTipoAcesso('cliente')}
             >
-              Portal Cliente
+              Cliente
+            </button>
+            <button
+              type="button"
+              className={`portal-btn ${tipoAcesso === 'admin' ? 'active' : ''}`}
+              onClick={() => setTipoAcesso('admin')}
+            >
+              Admin
             </button>
           </div>
 
           <form onSubmit={handleSubmit} className="auth-form">
             <div className="input-group">
               <label htmlFor="email">
-                E-mail {tipoAcesso === 'funcionario' ? 'corporativo' : 'do cliente'}
+                E-mail {tipoAcesso === 'cliente' ? 'do cliente' : 'corporativo'}
               </label>
               <input
                 id="email"
                 type="email"
                 placeholder={
-                  tipoAcesso === 'funcionario'
-                    ? 'usuario@technexus.com'
-                    : 'cliente@empresa.com'
+                  tipoAcesso === 'cliente'
+                    ? 'cliente@empresa.com'
+                    : 'usuario@technexus.com'
                 }
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -126,20 +153,6 @@ export default function Login({ onLoginSuccess }) {
                 onChange={(e) => setSenha(e.target.value)}
                 required
               />
-            </div>
-
-            <div className="form-options">
-              <label className="checkbox-container">
-                <input
-                  type="checkbox"
-                  checked={lembrar}
-                  onChange={(e) => setLembrar(e.target.checked)}
-                />
-                <span className="label-text">Lembrar acesso</span>
-              </label>
-              <a href="#esqueceu" className="forgot-link">
-                Esqueceu a senha?
-              </a>
             </div>
 
             <button type="submit" className="submit-btn">
